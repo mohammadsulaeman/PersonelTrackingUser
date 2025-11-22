@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36631.11
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonelTrackingUser", "PersonelTrackingUser\PersonelTrackingUser.csproj", "{2D303511-3352-433B-9B36-EDD43539D32F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{464A2D0C-EFF9-4228-B1D3-D7D4935D506D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{6EF71D6F-78AD-4758-8D8A-F891B81A5523}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D303511-3352-433B-9B36-EDD43539D32F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D303511-3352-433B-9B36-EDD43539D32F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D303511-3352-433B-9B36-EDD43539D32F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D303511-3352-433B-9B36-EDD43539D32F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{464A2D0C-EFF9-4228-B1D3-D7D4935D506D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{464A2D0C-EFF9-4228-B1D3-D7D4935D506D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{464A2D0C-EFF9-4228-B1D3-D7D4935D506D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{464A2D0C-EFF9-4228-B1D3-D7D4935D506D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EF71D6F-78AD-4758-8D8A-F891B81A5523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EF71D6F-78AD-4758-8D8A-F891B81A5523}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EF71D6F-78AD-4758-8D8A-F891B81A5523}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EF71D6F-78AD-4758-8D8A-F891B81A5523}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C1C48CD2-8B18-4993-8574-EE0061B4115D}
+	EndGlobalSection
+EndGlobal
