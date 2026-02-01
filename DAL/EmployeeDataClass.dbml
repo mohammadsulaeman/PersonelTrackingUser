@@ -6,10 +6,15 @@
       <Column Name="DepartmentName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.TASKSTATE" Member="TASKSTATEs">
-    <Type Name="TASKSTATE">
+  <Table Name="dbo.TASK" Member="TASKs">
+    <Type Name="TASK">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="StateName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TaskTitle" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TaskContent" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="TaskStartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TaskDeliveryDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TaskState" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.EMPLOYEE" Member="EMPLOYEEs">
@@ -25,7 +30,7 @@
       <Column Name="BirthDay" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="Address" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Password" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="IsAdmin" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsAdmin" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.MONTHS" Member="MONTHs">
@@ -67,15 +72,10 @@
       <Column Name="MonthID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.TASK" Member="TASKs">
-    <Type Name="TASK">
+  <Table Name="dbo.TASKSTATE" Member="TASKSTATEs">
+    <Type Name="TASKSTATE">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TaskTitle" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="TaskContent" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="TaskStartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="TaskDeliveryDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="TaskState" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StateName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

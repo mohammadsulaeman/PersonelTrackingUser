@@ -26,7 +26,7 @@ namespace DAL.DTO
 
         public int Salary { get; set; }
 
-        public int isAdmin { get; set; }
+        public bool? isAdmin { get; set; }
 
         public string Password { get; set; }
 

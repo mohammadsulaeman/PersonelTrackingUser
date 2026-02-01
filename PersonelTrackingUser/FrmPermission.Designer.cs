@@ -35,7 +35,7 @@ namespace PersonelTrackingUser
             this.label8 = new System.Windows.Forms.Label();
             this.dpStart = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDayAmount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -64,10 +64,11 @@ namespace PersonelTrackingUser
             // 
             // dpEnd
             // 
-            this.dpEnd.Location = new System.Drawing.Point(145, 114);
+            this.dpEnd.Location = new System.Drawing.Point(170, 114);
             this.dpEnd.Name = "dpEnd";
             this.dpEnd.Size = new System.Drawing.Size(200, 20);
             this.dpEnd.TabIndex = 1;
+            this.dpEnd.ValueChanged += new System.EventHandler(this.dpEnd_ValueChanged);
             // 
             // label8
             // 
@@ -81,10 +82,11 @@ namespace PersonelTrackingUser
             // 
             // dpStart
             // 
-            this.dpStart.Location = new System.Drawing.Point(145, 81);
+            this.dpStart.Location = new System.Drawing.Point(171, 82);
             this.dpStart.Name = "dpStart";
             this.dpStart.Size = new System.Drawing.Size(200, 20);
             this.dpStart.TabIndex = 0;
+            this.dpStart.ValueChanged += new System.EventHandler(this.dpStart_ValueChanged);
             // 
             // label7
             // 
@@ -96,14 +98,14 @@ namespace PersonelTrackingUser
             this.label7.TabIndex = 15;
             this.label7.Text = "Start Date";
             // 
-            // textBox1
+            // txtDayAmount
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(171, 146);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(166, 26);
-            this.textBox1.TabIndex = 17;
+            this.txtDayAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDayAmount.Location = new System.Drawing.Point(171, 146);
+            this.txtDayAmount.Name = "txtDayAmount";
+            this.txtDayAmount.ReadOnly = true;
+            this.txtDayAmount.Size = new System.Drawing.Size(166, 26);
+            this.txtDayAmount.TabIndex = 17;
             // 
             // label2
             // 
@@ -164,7 +166,7 @@ namespace PersonelTrackingUser
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDayAmount);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dpEnd);
             this.Controls.Add(this.label8);
@@ -175,6 +177,7 @@ namespace PersonelTrackingUser
             this.Name = "FrmPermission";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Permission";
+            this.Load += new System.EventHandler(this.FrmPermission_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,7 +191,7 @@ namespace PersonelTrackingUser
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dpStart;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDayAmount;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;

@@ -11,7 +11,7 @@ namespace PersonelTrackingUser
         public static int EmployeeID { get; set; }
         public static int UserNo { get; set; }
 
-        public static int isAdmin { get; set; }
+        public static bool isAdmin { get; set; }
 
     }
 }

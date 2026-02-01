@@ -25,9 +25,9 @@ namespace PersonelTrackingUser
         {
             this.Close();
         }
-
-        SalaryDTO dto = new SalaryDTO();
         bool comboFull = false;
+        SalaryDTO dto = new SalaryDTO();
+        
         private void FrmSalary_Load(object sender, EventArgs e)
         {
             dto = SalaryBLL.GetAll();

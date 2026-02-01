@@ -40,11 +40,11 @@ namespace PersonelTrackingUser
                     MessageBox.Show("Please control your information");
                 else
                 {
-                    EMPLOYEE employee = new EMPLOYEE();
+                    EMPLOYEE employee;
                     employee = employeeList.First();
                     UserStatic.EmployeeID = employee.ID;
                     UserStatic.UserNo = employee.UserNo;
-                    UserStatic.isAdmin = employee.IsAdmin;
+                    UserStatic.isAdmin = (bool) employee.IsAdmin;
                     FrmMain frm = new FrmMain();
                     this.Hide();
                     frm.ShowDialog();
