@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DAL;
 using BLL;
 using DAL.DAO;
+using DAL.DTO;
 namespace PersonelTrackingUser
 {
     public partial class FrmPosition : Form
@@ -35,16 +36,40 @@ namespace PersonelTrackingUser
                 MessageBox.Show("Please select a department");
             }else
             {
-                POSITION position = new POSITION();
-                position.PositionName = txtPosition.Text.Trim();
-                position.DepartmentID = Convert.ToInt32(cmbDepartment.SelectedValue);
-                BLL.PositionBLL.AddPosition(position);
-                txtPosition.Clear();
-                cmbDepartment.SelectedIndex = -1;
-                MessageBox.Show("Position was added");
+                if (!isUpdate)
+                {
+                    POSITION position = new POSITION();
+                    position.PositionName = txtPosition.Text.Trim();
+                    position.DepartmentID = Convert.ToInt32(cmbDepartment.SelectedValue);
+                    BLL.PositionBLL.AddPosition(position);
+                    txtPosition.Clear();
+                    cmbDepartment.SelectedIndex = -1;
+                    MessageBox.Show("Position was added");
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Are you sure?", "warning", MessageBoxButtons.YesNo);
+                    if(result == DialogResult.Yes)
+                    {
+                        MessageBox.Show(detail.ID.ToString());
+                        POSITION position = new POSITION();
+                        position.ID = detail.ID;
+                        position.PositionName = txtPosition.Text;
+                        position.DepartmentID = Convert.ToInt32(cmbDepartment.SelectedValue);
+                        bool control = false;
+                        if (Convert.ToInt32(cmbDepartment.SelectedValue) != detail.OldDepartmentID)
+                            control = true;
+                        PositionBLL.UpdatePosition(position, control);
+                        MessageBox.Show("Position was update");
+                        this.Close();
+                    }
+                }
+                
             }
         }
 
+        public bool isUpdate = false;
+        public PositionDTO detail = new PositionDTO();
         private void FrmPosition_Load(object sender, EventArgs e)
         {
             departmentList = DepartmentBLL.GetDepartments();
@@ -52,6 +77,11 @@ namespace PersonelTrackingUser
             cmbDepartment.DisplayMember = "DepartmentName";
             cmbDepartment.ValueMember = "ID";
             cmbDepartment.SelectedIndex = -1;
+            if (isUpdate)
+            {
+                txtPosition.Text = detail.PositionName;
+                cmbDepartment.SelectedValue = detail.DepartmentID;
+            }
         }
     }
 }

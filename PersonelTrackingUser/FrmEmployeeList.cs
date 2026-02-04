@@ -42,24 +42,54 @@ namespace PersonelTrackingUser
             this.Hide();
             frmEmployee.ShowDialog();
             this.Visible = true;
+            FillAllData();
+            CleanFilters();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            FrmEmployee frmEmployee = new FrmEmployee();
-            this.Hide();
-            frmEmployee.ShowDialog();
-            this.Visible = true;
+            if (detail.EmployeeID == 0)
+                MessageBox.Show("Please select on employee on table");
+            else
+            {
+                FrmEmployee frmEmployee = new FrmEmployee();
+                this.Hide();
+                frmEmployee.isUpdate = true;
+                frmEmployee.detail = detail;
+                frmEmployee.ShowDialog();
+                this.Visible = true;
+                FillAllData();
+                CleanFilters();
+
+            }
+           
         }
 
         EmployeeDTO dto = new EmployeeDTO();
         bool comboFull = false;
-        private void FrmEmployeeList_Load(object sender, EventArgs e)
+        EmployeeDetailDTO detail = new EmployeeDetailDTO();
+
+        void FillAllData()
         {
             dto = EmployeeBLL.GetAll();
             dataGridView1.DataSource = dto.employeeDetailDTOs;
+            comboFull = false;
+            cmbDepartment.DataSource = dto.DEPARTMENTs;
+            cmbDepartment.DisplayMember = "DepartmentName";
+            cmbDepartment.ValueMember = "ID";
+
+            cmbPosition.DataSource = dto.positionDTOs;
+            cmbPosition.DisplayMember = "PositionName";
+            cmbPosition.ValueMember = "ID";
+            cmbDepartment.SelectedIndex = -1;
+            cmbPosition.SelectedIndex = -1;
+            comboFull = true;
+        }
+        private void FrmEmployeeList_Load(object sender, EventArgs e)
+        {
+            FillAllData();
             dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].HeaderText = "User Number";
+            dataGridView1.Columns[1].HeaderText = "User No";
             dataGridView1.Columns[2].HeaderText = "Name";
             dataGridView1.Columns[3].HeaderText = "Surname";
             dataGridView1.Columns[4].HeaderText = "Department";
@@ -72,17 +102,7 @@ namespace PersonelTrackingUser
             dataGridView1.Columns[11].Visible = false;
             dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns[13].Visible = false;
-            comboFull = false;
-            cmbDepartment.DataSource = dto.DEPARTMENTs;
-            cmbDepartment.DisplayMember = "DepartmentName";
-            cmbDepartment.ValueMember = "ID";
-
-            cmbPosition.DataSource = dto.positionDTOs;
-            cmbPosition.DisplayMember = "PositionName";
-            cmbPosition.ValueMember = "ID";
-            cmbDepartment.SelectedIndex = -1;
-            cmbPosition.SelectedIndex = -1;
-            comboFull = true;
+           
 
         }
 
@@ -114,6 +134,11 @@ namespace PersonelTrackingUser
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            CleanFilters();
+        }
+
+        private void CleanFilters()
+        {
             txtUserNo.Clear();
             txtName.Clear();
             txtSurname.Clear();
@@ -124,6 +149,40 @@ namespace PersonelTrackingUser
             cmbDepartment.DataSource = dto.DEPARTMENTs;
             comboFull = true;
             dataGridView1.DataSource = dto.employeeDetailDTOs;
+        }
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detail.Name = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            detail.Surname = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+            detail.Password = dataGridView1.Rows[e.RowIndex].Cells[10].Value.ToString();
+            detail.ImagePath = dataGridView1.Rows[e.RowIndex].Cells[11].Value.ToString();
+            detail.Address = dataGridView1.Rows[e.RowIndex].Cells[12].Value.ToString();
+            detail.isAdmin = Convert.ToBoolean(dataGridView1.Rows[e.RowIndex].Cells[9].Value);
+            detail.BhirtDay = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[13].Value);
+            detail.UserNO = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+            detail.DepartmentID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[6].Value);
+            detail.PositionID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[7].Value);
+            detail.EmployeeID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+            detail.Salary = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[8].Value);
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure to delete this employee", "Warning", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                EmployeeBLL.DeleteEmployee(detail.EmployeeID);
+                MessageBox.Show("Employee was Delete");
+                FillAllData();
+                CleanFilters();
+            }
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            ExportToExcel.ExcelExport(dataGridView1,"Data Employee");
         }
     }
 }

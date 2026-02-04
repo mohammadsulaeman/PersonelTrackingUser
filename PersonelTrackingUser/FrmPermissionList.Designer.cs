@@ -34,7 +34,7 @@ namespace PersonelTrackingUser
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnAddApprove = new System.Windows.Forms.Button();
+            this.btnApprove = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDisApprove = new System.Windows.Forms.Button();
             this.pnlForAdmin = new System.Windows.Forms.Panel();
@@ -49,18 +49,21 @@ namespace PersonelTrackingUser
             this.txtUserNo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cmbState = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.txtDayAmount = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbDeliveryDate = new System.Windows.Forms.RadioButton();
+            this.rbEndDate = new System.Windows.Forms.RadioButton();
             this.rbStartDate = new System.Windows.Forms.RadioButton();
             this.dpEnd = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.dpStart = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnlForAdmin.SuspendLayout();
@@ -70,12 +73,14 @@ namespace PersonelTrackingUser
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.Location = new System.Drawing.Point(0, 215);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(883, 277);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
             // btnNew
             // 
@@ -108,6 +113,7 @@ namespace PersonelTrackingUser
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnClose
             // 
@@ -120,21 +126,23 @@ namespace PersonelTrackingUser
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // btnAddApprove
+            // btnApprove
             // 
-            this.btnAddApprove.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddApprove.Location = new System.Drawing.Point(186, 6);
-            this.btnAddApprove.Name = "btnAddApprove";
-            this.btnAddApprove.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnAddApprove.Size = new System.Drawing.Size(140, 29);
-            this.btnAddApprove.TabIndex = 5;
-            this.btnAddApprove.Text = "Add Approve";
-            this.btnAddApprove.UseVisualStyleBackColor = true;
+            this.btnApprove.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApprove.Location = new System.Drawing.Point(186, 6);
+            this.btnApprove.Name = "btnApprove";
+            this.btnApprove.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnApprove.Size = new System.Drawing.Size(140, 29);
+            this.btnApprove.TabIndex = 5;
+            this.btnApprove.Text = "Approve";
+            this.btnApprove.UseVisualStyleBackColor = true;
+            this.btnApprove.Click += new System.EventHandler(this.btnApprove_Click);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnExcel);
             this.panel1.Controls.Add(this.btnDisApprove);
-            this.panel1.Controls.Add(this.btnAddApprove);
+            this.panel1.Controls.Add(this.btnApprove);
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnUpdate);
@@ -155,6 +163,7 @@ namespace PersonelTrackingUser
             this.btnDisApprove.TabIndex = 10;
             this.btnDisApprove.Text = "DisApprove";
             this.btnDisApprove.UseVisualStyleBackColor = true;
+            this.btnDisApprove.Click += new System.EventHandler(this.btnDisApprove_Click);
             // 
             // pnlForAdmin
             // 
@@ -269,6 +278,8 @@ namespace PersonelTrackingUser
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.cmbState);
+            this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.txtDayAmount);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.btnClear);
@@ -284,6 +295,25 @@ namespace PersonelTrackingUser
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(530, 215);
             this.panel3.TabIndex = 3;
+            // 
+            // cmbState
+            // 
+            this.cmbState.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbState.FormattingEnabled = true;
+            this.cmbState.Location = new System.Drawing.Point(122, 138);
+            this.cmbState.Name = "cmbState";
+            this.cmbState.Size = new System.Drawing.Size(192, 28);
+            this.cmbState.TabIndex = 26;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(12, 141);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 20);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "State";
             // 
             // txtDayAmount
             // 
@@ -313,6 +343,7 @@ namespace PersonelTrackingUser
             this.btnClear.TabIndex = 15;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnSearch
             // 
@@ -323,10 +354,11 @@ namespace PersonelTrackingUser
             this.btnSearch.TabIndex = 13;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.rbDeliveryDate);
+            this.groupBox1.Controls.Add(this.rbEndDate);
             this.groupBox1.Controls.Add(this.rbStartDate);
             this.groupBox1.Location = new System.Drawing.Point(336, 9);
             this.groupBox1.Name = "groupBox1";
@@ -334,17 +366,17 @@ namespace PersonelTrackingUser
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             // 
-            // rbDeliveryDate
+            // rbEndDate
             // 
-            this.rbDeliveryDate.AutoSize = true;
-            this.rbDeliveryDate.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbDeliveryDate.Location = new System.Drawing.Point(28, 44);
-            this.rbDeliveryDate.Name = "rbDeliveryDate";
-            this.rbDeliveryDate.Size = new System.Drawing.Size(132, 25);
-            this.rbDeliveryDate.TabIndex = 1;
-            this.rbDeliveryDate.TabStop = true;
-            this.rbDeliveryDate.Text = "Delivery Date";
-            this.rbDeliveryDate.UseVisualStyleBackColor = true;
+            this.rbEndDate.AutoSize = true;
+            this.rbEndDate.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbEndDate.Location = new System.Drawing.Point(28, 44);
+            this.rbEndDate.Name = "rbEndDate";
+            this.rbEndDate.Size = new System.Drawing.Size(97, 25);
+            this.rbEndDate.TabIndex = 1;
+            this.rbEndDate.TabStop = true;
+            this.rbEndDate.Text = "End Date";
+            this.rbEndDate.UseVisualStyleBackColor = true;
             // 
             // rbStartDate
             // 
@@ -402,6 +434,17 @@ namespace PersonelTrackingUser
             this.label6.TabIndex = 9;
             this.label6.Text = "Permission Date";
             // 
+            // btnExcel
+            // 
+            this.btnExcel.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcel.Location = new System.Drawing.Point(674, 23);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(149, 42);
+            this.btnExcel.TabIndex = 12;
+            this.btnExcel.Text = "Export To Excel";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
             // FrmPermissionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -414,6 +457,7 @@ namespace PersonelTrackingUser
             this.Name = "FrmPermissionList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Permission List";
+            this.Load += new System.EventHandler(this.FrmPermissionList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.pnlForAdmin.ResumeLayout(false);
@@ -432,7 +476,7 @@ namespace PersonelTrackingUser
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnAddApprove;
+        private System.Windows.Forms.Button btnApprove;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnDisApprove;
         private System.Windows.Forms.Panel pnlForAdmin;
@@ -452,12 +496,15 @@ namespace PersonelTrackingUser
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rbDeliveryDate;
+        private System.Windows.Forms.RadioButton rbEndDate;
         private System.Windows.Forms.RadioButton rbStartDate;
         private System.Windows.Forms.DateTimePicker dpEnd;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dpStart;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbState;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnExcel;
     }
 }

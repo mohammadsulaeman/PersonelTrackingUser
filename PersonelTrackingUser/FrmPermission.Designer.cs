@@ -37,7 +37,7 @@ namespace PersonelTrackingUser
             this.label7 = new System.Windows.Forms.Label();
             this.txtDayAmount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtExplanation = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -117,14 +117,14 @@ namespace PersonelTrackingUser
             this.label2.TabIndex = 18;
             this.label2.Text = "Day Amount";
             // 
-            // textBox2
+            // txtExplanation
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(171, 187);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(373, 213);
-            this.textBox2.TabIndex = 2;
+            this.txtExplanation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtExplanation.Location = new System.Drawing.Point(171, 187);
+            this.txtExplanation.Multiline = true;
+            this.txtExplanation.Name = "txtExplanation";
+            this.txtExplanation.Size = new System.Drawing.Size(373, 213);
+            this.txtExplanation.TabIndex = 2;
             // 
             // label3
             // 
@@ -156,6 +156,7 @@ namespace PersonelTrackingUser
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // FrmPermission
             // 
@@ -164,7 +165,7 @@ namespace PersonelTrackingUser
             this.ClientSize = new System.Drawing.Size(623, 488);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtExplanation);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtDayAmount);
             this.Controls.Add(this.label2);
@@ -193,7 +194,7 @@ namespace PersonelTrackingUser
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtDayAmount;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtExplanation;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnSave;

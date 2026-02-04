@@ -40,9 +40,29 @@ namespace BLL
             }
         }
 
+        internal static void UpdateEmployee(POSITION position)
+        {
+            EmployeeDAO.UpdateEmployee(position);
+        }
+
+        internal static void UpdateEmployee(int employeeID, int amount)
+        {
+            EmployeeDAO.UpdateEmployee(employeeID, amount);
+        }
+
         public static List<EMPLOYEE> GetEmployees(int v, string text)
         {
             return EmployeeDAO.GetEmployees(v, text);
+        }
+
+        public static void UpdateEmployee(EMPLOYEE employee)
+        {
+            EmployeeDAO.UpdateEmployee(employee);
+        }
+
+        public static void DeleteEmployee(int employeeID)
+        {
+            EmployeeDAO.DeleteEmployee(employeeID);
         }
     }
 }

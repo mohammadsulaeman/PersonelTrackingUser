@@ -71,6 +71,66 @@ namespace DAL.DAO
             return employeeList;
         }
 
+        public static void DeleteEmployee(int employeeID)
+        {
+            try {
+                EMPLOYEE emp = db.EMPLOYEEs.First(x => x.ID == employeeID);
+                db.EMPLOYEEs.DeleteOnSubmit(emp);
+                db.SubmitChanges();
+
+                
+
+
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void UpdateEmployee(POSITION position)
+        {
+            List<EMPLOYEE> list = db.EMPLOYEEs.Where(x => x.PositionID == position.ID).ToList();
+            foreach( var item in list)
+            {
+                item.DepartmentID = position.DepartmentID;
+            }
+            db.SubmitChanges();
+        }
+        public static void UpdateEmployee(EMPLOYEE employee)
+        {
+            try
+            {
+                EMPLOYEE emp = db.EMPLOYEEs.First(x => x.ID == employee.ID);
+                emp.UserNo = employee.UserNo;
+                emp.Name = employee.Name;
+                emp.Surname = employee.Surname;
+                emp.Password = employee.Password;
+                emp.IsAdmin = employee.IsAdmin;
+                emp.BirthDay = employee.BirthDay;
+                emp.Address = employee.Address;
+                emp.DepartmentID = employee.DepartmentID;
+                emp.PositionID = employee.PositionID;
+                emp.Salary = employee.Salary;
+                db.SubmitChanges();
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void UpdateEmployee(int employeeID, int amount)
+        {
+            try
+            {
+                EMPLOYEE employee = db.EMPLOYEEs.First(x => x.ID == employeeID);
+                employee.Salary = amount;
+                db.SubmitChanges();
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static List<EMPLOYEE> GetEmployees(int v, string text)
         {
             try
