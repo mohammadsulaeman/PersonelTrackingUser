@@ -136,13 +136,13 @@ namespace PersonelTrackingUser
                         EMPLOYEE employee = new EMPLOYEE();
                         employee.UserNo = Convert.ToInt32(txtUserNo.Text);
                         employee.Password = txtPassword.Text;
-                        employee.IsAdmin = chAdmin.Checked;
+                        employee.isAdmin = chAdmin.Checked;
                         employee.Name = txtName.Text;
                         employee.Surname = txtSurname.Text;
                         employee.Salary = Convert.ToInt32(txtSalary.Text);
                         employee.DepartmentID = Convert.ToInt32(cmbDepartment.SelectedValue);
                         employee.PositionID = Convert.ToInt32(cmbPosition.SelectedValue);
-                        employee.Address = txtAddress.Text;
+                        employee.Adress = txtAddress.Text;
                         employee.BirthDay = dateTimePicker1.Value;
                         employee.ImagePath = fileName;
                         EmployeeBLL.AddEmployee(employee);
@@ -186,9 +186,9 @@ namespace PersonelTrackingUser
                             employee.UserNo = Convert.ToInt32(txtUserNo.Text);
                             employee.Name = txtName.Text;
                             employee.Surname = txtSurname.Text;
-                            employee.IsAdmin = chAdmin.Checked;
+                            employee.isAdmin = chAdmin.Checked;
                             employee.Password = txtPassword.Text;
-                            employee.Address = txtAddress.Text;
+                            employee.Adress = txtAddress.Text;
                             employee.BirthDay = dateTimePicker1.Value;
                             employee.DepartmentID = Convert.ToInt32(cmbDepartment.SelectedValue);
                             employee.PositionID = Convert.ToInt32(cmbPosition.SelectedValue);

@@ -51,7 +51,6 @@ namespace PersonelTrackingUser
                     DialogResult result = MessageBox.Show("Are you sure?", "warning", MessageBoxButtons.YesNo);
                     if(result == DialogResult.Yes)
                     {
-                        MessageBox.Show(detail.ID.ToString());
                         POSITION position = new POSITION();
                         position.ID = detail.ID;
                         position.PositionName = txtPosition.Text;

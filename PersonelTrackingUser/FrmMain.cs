@@ -37,7 +37,8 @@ namespace PersonelTrackingUser
                 this.Hide();
                 frm.ShowDialog();
                 this.Visible = true;
-            }else
+            }
+            else
             {
                 FrmEmployeeList frmEmployeeList = new FrmEmployeeList();
                 this.Hide();
@@ -45,6 +46,7 @@ namespace PersonelTrackingUser
                 this.Visible = true;
             }
            
+
         }
 
         private void btnTasks_Click(object sender, EventArgs e)

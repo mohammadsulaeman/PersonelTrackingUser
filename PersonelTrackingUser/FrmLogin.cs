@@ -33,19 +33,22 @@ namespace PersonelTrackingUser
         {
 
             if (txtUserNo.Text.Trim() == "" || txtPassword.Text.Trim() == "")
-                MessageBox.Show("Please fill the userno and password");
+               MessageBox.Show("Please fill the userno and password");
             else
             {
                 List<EMPLOYEE> employeeList = EmployeeBLL.GetEmployees(Convert.ToInt32(txtUserNo.Text), txtPassword.Text);
                 if (employeeList.Count == 0)
+                {
                     MessageBox.Show("Please control your information");
+                    
+                }
                 else
                 {
                     EMPLOYEE employee;
                     employee = employeeList.First();
                     UserStatic.EmployeeID = employee.ID;
                     UserStatic.UserNo = employee.UserNo;
-                    UserStatic.isAdmin = (bool)employee.IsAdmin;
+                    UserStatic.isAdmin = (bool)employee.isAdmin;
                     FrmMain frm = new FrmMain();
                     this.Hide();
                     frm.ShowDialog();

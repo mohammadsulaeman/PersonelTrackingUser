@@ -79,6 +79,7 @@ namespace PersonelTrackingUser
                 DepartmentBLL.DeleteDepartment(detail.ID);
                 MessageBox.Show("Department waas delete");
                 list = DepartmentBLL.GetDepartments();
+                this.Close();
             }
         }
 
